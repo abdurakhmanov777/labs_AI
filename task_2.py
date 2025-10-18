@@ -2,7 +2,7 @@ from numpy import ndarray
 from pandas import DataFrame
 from sklearn.tree import DecisionTreeClassifier
 
-from utils import load_csv, save_answer, log_task_done, top_n_features
+from utils import load_csv, log_task_done, save_answer, top_n_features
 
 
 def main() -> None:

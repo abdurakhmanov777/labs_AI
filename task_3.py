@@ -7,7 +7,7 @@ from sklearn.model_selection import KFold, cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import scale
 
-from utils import load_csv, save_answer, log_task_done
+from utils import load_csv, log_task_done, save_answer
 
 
 def main() -> None:

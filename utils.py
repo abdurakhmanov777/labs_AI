@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 import inspect
 from pathlib import Path
-import pandas as pd
 from typing import Literal
+
+import pandas as pd
 
 
 def save_answer(

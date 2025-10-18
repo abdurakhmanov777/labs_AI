@@ -3,7 +3,7 @@ from typing import Any
 
 from pandas import DataFrame, Series
 
-from utils import load_csv, save_answer, log_task_done
+from utils import load_csv, log_task_done, save_answer
 
 
 def extract_first_name(
@@ -52,15 +52,15 @@ def main() -> None:
     )
 
     # 4. Средний и медианный возраст
-    mean_age = df['Age'].mean()
-    median_age = df['Age'].median()
+    mean_age: float = df['Age'].mean()
+    median_age: float = df['Age'].median()
     save_answer(
         '4.txt',
         f"{mean_age:.2f} {median_age:.2f}"
     )
 
     # 5. Корреляция между SibSp и Parch
-    correlation = df['SibSp'].corr(df['Parch'])
+    correlation: float = df['SibSp'].corr(df['Parch'])
     save_answer(
         '5.txt',
         f"{correlation:.2f}"
