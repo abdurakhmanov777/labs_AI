@@ -1,8 +1,8 @@
+import importlib.util
 import io
 import pathlib
 import sys
 from importlib.machinery import ModuleSpec
-import importlib.util
 from types import ModuleType
 from typing import Any, TextIO
 
