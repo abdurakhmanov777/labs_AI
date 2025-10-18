@@ -22,14 +22,14 @@ def save_answer(
         Path: Путь к сохранённому файлу.
     """
     # Получаем имя вызывающего скрипта
-    script_name = Path(inspect.stack()[1].filename).stem
+    script_name: str = Path(inspect.stack()[1].filename).stem
 
     # Папка answers/<имя_скрипта>
-    folder = Path('answers') / script_name
+    folder: Path = Path('answers') / script_name
     folder.mkdir(parents=True, exist_ok=True)
 
     # Полный путь до файла
-    file_path = folder / filename
+    file_path: Path = folder / filename
     file_path.write_text(answer, encoding='utf-8')
     return file_path
 
@@ -52,8 +52,8 @@ def load_csv(
     Returns:
         pd.DataFrame: Загруженный DataFrame.
     """
-    base = Path(__file__).resolve().parent
-    file_path = base.joinpath(*map(str, path_parts))
+    base: Path = Path(__file__).resolve().parent
+    file_path: Path = base.joinpath(*map(str, path_parts))
     return pd.read_csv(file_path, usecols=usecols, header=header)
 
 
@@ -82,8 +82,8 @@ def log_task_done() -> None:
     Формат:
     'Задание №* завершено. Ответы сохранены в папку "answers/task_*".'
     """
-    script_name = Path(inspect.stack()[1].filename).stem
-    task_number = script_name.split('_')[-1]
+    script_name: str = Path(inspect.stack()[1].filename).stem
+    task_number: str = script_name.split('_')[-1]
     print(
         f'Задание №{task_number} завершено. Ответы сохранены в папку '
         f'"answers/{script_name}".'
