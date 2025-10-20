@@ -6,19 +6,20 @@ from pandas import DataFrame, Series
 from utils import load_csv, log_task_done, save_answer
 
 
-def extract_first_name(
-    name: str
-) -> str | None:
+def extract_first_name(name: str) -> str | None:
     """
-    Извлекает личное имя женщины из полного имени
-    с титулом Miss. или Mrs.
+    Извлекает личное имя женщины из полного имени.
+    Для 'Miss.' — берёт первое слово после титула.
+    Для 'Mrs.' — берёт первое слово из скобок, если они есть.
     """
-    # Ищем "Miss." или "Mrs." и берём первое слово после титула
-    match: re.Match[str] | None = re.search(
-        r'(?:Miss\.|Mrs\.)\s+([A-Za-z\-]+)', name
-    )
-    # Возвращаем имя или None, если совпадений нет
-    return match.group(1) if match else None
+    if "Mrs." in name:
+        # Ищем имя в скобках и берём первое слово
+        match: re.Match[str] | None = re.search(r'\((\w+)', name)
+        return match.group(1) if match else None
+    else:
+        # Ищем первое слово после Miss.
+        match = re.search(r'Miss\.\s+([A-Za-z\-]+)', name)
+        return match.group(1) if match else None
 
 
 def main() -> None:
