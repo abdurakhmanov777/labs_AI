@@ -12,7 +12,7 @@ def extract_first_name(name: str) -> str | None:
     Для 'Miss.' — берёт первое слово после титула.
     Для 'Mrs.' — берёт первое слово из скобок, если они есть.
     """
-    if "Mrs." in name:
+    if 'Mrs.' in name:
         # Ищем имя в скобках и берём первое слово
         match: re.Match[str] | None = re.search(r'\((\w+)', name)
         return match.group(1) if match else None
